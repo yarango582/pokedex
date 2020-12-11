@@ -5,7 +5,9 @@ import Pokemons from './components/pokemon-container';
 function App() {
   return (
     <div className="App">
-      <Pokemons />
+      <div className="container">
+        <Pokemons />
+      </div>
     </div>
   );
 }

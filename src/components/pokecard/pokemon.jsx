@@ -5,9 +5,11 @@ function Pokemon (props){
 
     return(
         <div className="pokemon">
-            <p>
-                {props.name}
-            </p>
+            <div className="pokecard-container">
+                <p>
+                    {props.name}
+                </p>
+            </div>
         </div>
     )
 }
