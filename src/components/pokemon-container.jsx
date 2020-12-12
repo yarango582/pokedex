@@ -3,21 +3,27 @@ import Pokemon from './pokecard/pokemon';
 
 function PokemonContainer(){
 
-    const  default_directory = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10";
-    const [pokemons, setPokemons] = useState([]);
+    const [pokemons, setPokemons] = useState({ hits: [], url: [] });
+
     const [page, setPage] = useState('');
+    const [previousPage, setPreviousPage] = useState(null);
+
+    const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+    
 
     useEffect(() =>{
 
         const getPokemons = async () => {
 
                 try {
-                    const results = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0`);
+                    const results = await fetch(`${BASE_URL}?limit=10&offset=${page}`);
                     let pokedatos = results.json();
 
                     pokedatos.then((data) =>{
-                        setPokemons(data.results);
+                        
+                        setPokemons({hits: data.results});
                         setPage(data.next);
+
                     }).catch((e)=>{
                         console.log(e);
                     })
@@ -29,63 +35,64 @@ function PokemonContainer(){
         }
 
         getPokemons();
-    
+
     }, []);
 
-    const nextPage = async () =>{
+    const nextPage = async () =>{        
+        
+        const results = await fetch(page);
+        const data = results.json();
+        
+        data.then((pokemon) => {
+            setPokemons({hits: pokemon.results})
+            setPage(pokemon.next);
+            setPreviousPage(pokemon.previous);
+        })
 
-        try {
-            const results = await fetch(page);
-            let newPage = results.json();
-
-            newPage.then((data) =>{
-               setPokemons(data.results);
-               setPage(data.next);
-               console.log(page);
-            }).catch((e) =>{
-                console.log(e);
-            })
-
-        } catch (error) {
-            console.log(error);
-        }
-
+        console.log(page);
     }
 
-    const previousPage = async () => {
+    const oldPage = async () => {
 
-       
+        if(previousPage !== null){
+            
+            const results = await fetch(previousPage);
+            const data = results.json();
 
-        try {
-            const results = await fetch(page);
-            let newPage = results.json();
-
-            newPage.then((data) =>{
-                console.log(data);
-                setPage(data.previous);
-                console.log(page)
-
-            }).catch((e) =>{
-                console.log(e);
+            data.then((pokemon) =>{
+                setPokemons({hits: pokemon.results});
+                setPage(pokemon.next);
+                setPreviousPage(pokemon.previous);
             })
 
-        } catch (error) {
-            console.log(error);
         }
     }
+
 
     return(
         <div className="pokemons-container">
             <h3>
-                {pokemons.map((pokemon) =>{
-                    return(
-                    <Pokemon key={pokemon.name} name={pokemon.name} />
-                    )
-                })}
+                <div className="pokemons">
+                    {
+                        
+
+                        pokemons.hits.map((pokedata) =>{
+                            
+                            return(
+
+                                <Pokemon 
+                                name={pokedata.name} 
+                                key={pokedata.name}
+                                url={pokedata.url}
+                                />
+                            )
+                        })
+                    }
+                </div>
             </h3>
             <div className="pagination">
-                <button type="button" onClick={previousPage}>Previous Page</button>
-                <button type="button" onClick={nextPage}>Next Page</button>
+                <button type="button" className="btn-previous" onClick={oldPage}>Previous Page</button>
+                <button type="button" className="btn-next" onClick={nextPage}>Next Page</button>
             </div>
         </div>
     )

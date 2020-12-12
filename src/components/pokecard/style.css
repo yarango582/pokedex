@@ -1,6 +1,95 @@
 .pokecard-container{
     padding: 30px 20px;
     border: 1px solid black;
-    margin: 5% 0%;
+    margin: 2% 0%;
     border-radius: 6px;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+#fire {
+    background-color: rgb(255, 166, 0);
+}
+
+#grass {
+    background-color: rgb(21, 102, 21);
+}
+
+#bug {
+    background-color: darkolivegreen;
+}
+
+#water {
+    background-color: rgb(88, 158, 216);
+}
+
+#normal {
+    background-color: rgb(170, 103, 103);
+}
+
+#poison {
+    background-color: violet;
+}
+
+#ground {
+    background-color: rgb(107, 39, 39);
+}
+
+#electric {
+    background-color: rgb(230, 230, 90);
+}
+
+#fairy {
+    background-color: rgb(204, 157, 157);
+}
+
+#fighting {
+    background-color: rgb(255, 115, 0);
+}
+
+#psychic {
+    background-color: rgb(180, 48, 180);
+}
+
+#rock {
+    background-color: silver;
+}
+
+#ground {
+    background-color: rgb(117, 117, 117);
+}
+
+#ice {
+    background-color: rgb(45, 156, 247);
+}
+
+#ghost {
+    background-color: rgb(85, 63, 85);
+}
+
+.pagination > button {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px black solid;
+}
+
+.pagination > .btn-next {
+    background-color: red;
+    color: white;
+    margin-left: 1%;
+}
+
+.pagination > .btn-previous {
+    background-color: blue;
+    color: white;
+}
+
+.pokeImagen {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.list-pokemons{
+    list-style: none;
 }
