@@ -1,0 +1,34 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation{
+    display: flex;
+}
+
+.logo-p {
+    max-width: 120px;
+    max-height: 80px;
+    margin-left: 10px;
+}
+
+.logo-p:hover {
+    transform: rotate(45deg);
+    align-items: flex-end;
+}
+
+.title {
+    margin-top: 28px;
+}
+
+.title:hover{
+    color: blue;
+}
+
+.search-bar{
+    margin-top: 20px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid black;
+}

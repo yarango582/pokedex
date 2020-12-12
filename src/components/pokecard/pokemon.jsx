@@ -52,11 +52,7 @@ function Pokemon (props){
             <div className="pokecard-container" 
             id={
                 pokemonsDetails.type.map((data) =>{
-                    return(
-                        
-                        color = [data.type.name]
-                        
-                    )
+                    return(color = data.type.name)
                 })
             }>
                 <ul className="list-pokemons">
@@ -76,7 +72,13 @@ function Pokemon (props){
                         Types: {
                             pokemonsDetails.type.map((data) =>{
                                 return(
-                                    data.type.name + ' '
+                                    <span>
+                                        <ul className="list-pokemons">
+                                            <li className="list-pokemons__item">
+                                            {data.type.name}
+                                            </li>
+                                        </ul>
+                                    </span>
                                 )
                             })
 
