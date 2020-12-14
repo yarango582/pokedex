@@ -58,7 +58,7 @@ function PokemonContainer(props){
         } catch (error) {
             console.log(error);
         }
-    }, [pokemons])
+    }, [searchPokemon])
 
     const nextPage = async () =>{        
         
