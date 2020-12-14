@@ -1,34 +1,63 @@
-import React from 'react';
-import 'react-simple-hook-modal/dist/styles.css';
+import React, {useState} from 'react';
+import {Modal, Button} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 import './style.css';
 
-import {
-    ModalProvider,
-    Modal,
-    useModal,
-    ModalTransition
-} from 'react-simple-hook-modal';
+const useStyle = makeStyles({
+    modal:{
+        position: 'absolute',
+        width: '400px',
+        background: 'white',
+        border: '2px solid #000',
+        boxShadow: '10px 5px 5px black',
+        padding: '10px 10px',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+    },
+    field:{
+        width: '100%',
+    },
+    buttonOpen:{
+        textAlign:'center',
+    }
+})
 
-function Details (props){
+export default function Details (props){
 
+    const styles = useStyle();
+    const [modal, setModal] = useState(false);
 
-    const {isModalOpen, openModal, closeModal} = useModal();
+    const openCloseModal = () =>{
+        setModal(!modal);
+    }
+
+    const body = (
+        <div className={styles.modal}>
+            <div className="content">
+                <h2>title</h2>
+            </div>
+            <div className="container-button-close">
+                <Button 
+                    className={styles.buttonOpen}
+                    onClick={()=>openCloseModal()}
+                > Close
+                </Button>
+            </div>
+        </div>
+    );
 
     return(
-        <ModalProvider>
-            <button onClick={openModal} className="button-details">See details -
-            {` ${props.pokemonName}`}
-            </button>
+        <div className="pokemonDetails">
             <Modal 
-                id="1"
-                isOpen={isModalOpen}
-                transition={ModalTransition.BOTTOM_UP}
-            >
-                <button onClick={closeModal}>Close</button>
+                open={modal}
+                onClose={openCloseModal}
+            > 
+                {body}
             </Modal>
-        </ModalProvider>
+            <div className="container-button-open">
+                <Button onClick={()=>openCloseModal()}>View details - {props.pokemonName}</Button>
+            </div>
+        </div>
     )
-
 }
-
-export default Details;

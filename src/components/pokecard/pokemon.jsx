@@ -84,7 +84,7 @@ function Pokemon (props){
                 </ul>
                 <img className="pokeImagen" src={pokemonsDetails.img} alt={props.name}/>
             </div>
-            <Details pokemonName={props.name}/>
+            <Details pokemonName={props.name} pokemonId={pokemonsDetails.hits.id}/>
         </div>
     )
 }

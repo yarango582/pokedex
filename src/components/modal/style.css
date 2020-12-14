@@ -1,4 +1,24 @@
 
+.container-button-open{
+    display: flex;
+    justify-content: center;
+}
+
+.container-button-open >button{
+    border: 1px solid;
+    text-transform: capitalize;
+}
+
+.container-button-close{
+    display: flex;
+    justify-content: center;
+}
+
+.container-button-close >button{
+    border: 1px solid;
+    text-transform: capitalize;
+}
+
 .button-details{
     text-align: center;
     height: 30px;
@@ -7,5 +27,9 @@
     background-color: black;
     color: white;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.button-close{
     cursor: pointer;
 }
