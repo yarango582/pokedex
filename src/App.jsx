@@ -1,14 +1,24 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 import Pokemons from './components/pokemon-container';
 import Navbar from './components/navbar/navbar';
 
 function App() {
+
+  const [search, setSearch] = useState('');
+
+  const handleInput = (e) =>{
+
+    const dataSearch = e.target.value;
+    setSearch(dataSearch);
+
+  }
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar handleInput={handleInput}/>
       <div className="container">
-        <Pokemons />
+        <Pokemons searchPokemon={search}/>
       </div>
     </div>
   );

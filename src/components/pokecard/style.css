@@ -7,6 +7,7 @@
     justify-content: space-around;
     background-color: white;
     letter-spacing: 0.2mm;
+    width: 100%;
 }
 
 #fire {
@@ -87,8 +88,8 @@
 }
 
 .pokeImagen {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 25%;
+    max-height: 25%;
 }
 
 .list-pokemons{

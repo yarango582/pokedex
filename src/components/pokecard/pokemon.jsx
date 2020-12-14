@@ -3,56 +3,52 @@ import './style.css';
 
 function Pokemon (props){
 
-    const urlPokeDetail = [];
+
     const [pokemonsDetails, setPokemonsDetails] = useState({ 
         hits: [], 
         img: [], 
         type: []
     });
-    let color = '';
-
+    
     useEffect(() => {
 
-        try {
+        const getPokemonData = () =>{
+            
+            try {
 
-            urlPokeDetail.push(props.url);
-
-            urlPokeDetail.forEach( async (detail) => {
-                
-                const results = await fetch(detail);
-                const data = results.json();
-                data.then((x) => {
-
-                    setPokemonsDetails({
-                        hits: x, 
-                        img: x.sprites.other.dream_world.front_default,
-                        type: x.types
-                    }); 
-
-                }).catch((e)=> console.log(e));
-                
-            })  
-
-        } catch (error) {
-            console.log(error);
-        }
-
-    }, []);
+                const urlPokeDetail = [];
+                urlPokeDetail.push(props.url);
     
-    const defineColor = () =>{
+                urlPokeDetail.forEach( async (detail) => {
+                    
+                    const results = await fetch(detail);
+                    const data = results.json();
+                    data.then((x) => {
+    
+                        setPokemonsDetails({
+                            hits: x, 
+                            img: x.sprites.other.dream_world.front_default,
+                            type: x.types
+                        }); 
+    
+                    }).catch((e)=> console.log(e));
+                    
+                })  
+    
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getPokemonData();
 
-        console.log(document.getElementsByClassName('pokecard-container'));
-
-    }
-
-    defineColor();
+    }, [props.url]);
 
     return(
         <div className="pokemon">
             <div className="pokecard-container" 
             id={
                 pokemonsDetails.type.map((data) =>{
-                    return(color = data.type.name)
+                    return(data.type.name)
                 })
             }>
                 <ul className="list-pokemons">
@@ -70,9 +66,9 @@ function Pokemon (props){
                     </li>
                     <li className="list-pokemons__item">
                         Types: {
-                            pokemonsDetails.type.map((data) =>{
+                            pokemonsDetails.type.map((data, index) =>{
                                 return(
-                                    <span>
+                                    <span key={index}>
                                         <ul className="list-pokemons">
                                             <li className="list-pokemons__item">
                                             {data.type.name}
@@ -81,7 +77,6 @@ function Pokemon (props){
                                     </span>
                                 )
                             })
-
                         }
                     </li>
                 </ul>

@@ -5,6 +5,7 @@
 
 .navigation{
     display: flex;
+    justify-content: flex-start;
 }
 
 .logo-p {
@@ -15,7 +16,6 @@
 
 .logo-p:hover {
     transform: rotate(45deg);
-    align-items: flex-end;
 }
 
 .title {
@@ -26,9 +26,18 @@
     color: blue;
 }
 
+.form-search-bar{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .search-bar{
     margin-top: 20px;
-    height: 35px;
+    padding: 10px;
+    height: 30%;
+    width: 70%;
     border-radius: 6px;
     border: 1px solid black;
+    color: blue;
+    font-weight: bolder;
 }

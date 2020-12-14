@@ -13,7 +13,9 @@ function Navbar (props){
                 alt="logo"
                 />
             </nav>
-            <input type="text" name="search" placeholder="Pokemon name" className="search-bar"/>
+            <form className="form-search-bar">
+                <input type="text" name="search" placeholder="Search Pokemon" className="search-bar" onChange={props.handleInput}/>
+            </form>
         </div>
     )
 
