@@ -88,9 +88,6 @@ function PokemonContainer(props){
         }
     }
 
- 
-    
-    
     useEffect(() => {
 
         /*Updates*/
