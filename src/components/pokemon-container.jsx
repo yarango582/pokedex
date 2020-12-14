@@ -88,23 +88,27 @@ function PokemonContainer(props){
         }
     }
 
-    useEffect(() =>{
-        /*Render*/
-        getPokemons();
-    }, [getPokemons]);
-
+ 
+    
+    
     useEffect(() => {
 
         /*Updates*/
         setSearchPokemon(props.searchPokemon.toLowerCase());
+
+        if(pokemons.hits.length < 1){
+            getPokemons();
+        }
         
         if(searchPokemon === ''){
-            getPokemons();
+            if(pokemons.hits.length <= 1){
+                getPokemons();
+            }
         }else if(searchPokemon !== ''){
             getPokemonSearch();
         }
 
-    }, [props.searchPokemon,searchPokemon, getPokemons, getPokemonSearch])
+    }, [props.searchPokemon,searchPokemon, getPokemons, getPokemonSearch,pokemons.hits.length])
 
     return(
         <div className="pokemons-container">
