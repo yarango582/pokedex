@@ -3,6 +3,7 @@ import './style.css';
 
 function Navbar (props){
 
+
     return(
         <div className="navbar">
             <nav className="navigation">
@@ -15,7 +16,7 @@ function Navbar (props){
                 <input type="text" name="search" placeholder="Search Pokemon" className="search-bar" onChange={props.handleInput}/>
             </form>
             </nav>
-            <h3 className="title">Pokedex</h3>
+            <h3 className="title" onClick={()=>{window.location.reload()}}>Pokedex</h3>
         </div>
     )
 

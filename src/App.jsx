@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Pokemons from './components/pokemon-container';
 import Navbar from './components/navbar/navbar';
+import Footer from './components/footer/footer';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <div className="container">
         <Pokemons searchPokemon={search}/>
       </div>
+      <Footer />
     </div>
   );
 }

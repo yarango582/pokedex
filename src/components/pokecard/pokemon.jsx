@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './style.css';
+import Details from '../modal/details';
 
 function Pokemon (props){
 
@@ -51,6 +52,7 @@ function Pokemon (props){
                     return(data.type.name)
                 })
             }>
+    
                 <ul className="list-pokemons">
                     <li className="list-pokemons__item">
                     # {pokemonsDetails.hits.id}
@@ -82,6 +84,7 @@ function Pokemon (props){
                 </ul>
                 <img className="pokeImagen" src={pokemonsDetails.img} alt={props.name}/>
             </div>
+            <Details pokemonName={props.name}/>
         </div>
     )
 }
