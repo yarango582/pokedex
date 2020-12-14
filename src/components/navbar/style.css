@@ -1,17 +1,13 @@
-.navbar{
-    display: flex;
-    justify-content: space-around;
-}
 
 .navigation{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .logo-p {
     max-width: 120px;
     max-height: 80px;
-    margin-left: 10px;
+    margin-left: 1%;
 }
 
 .logo-p:hover {
@@ -19,7 +15,7 @@
 }
 
 .title {
-    margin-top: 28px;
+    margin-left: 1%;
 }
 
 .title:hover{
@@ -35,9 +31,17 @@
     margin-top: 20px;
     padding: 10px;
     height: 30%;
-    width: 70%;
     border-radius: 6px;
     border: 1px solid black;
     color: blue;
     font-weight: bolder;
+}
+
+
+@media (max-width: 576px){
+    
+    .search-bar{
+        width: 40%;
+    }
+    
 }
