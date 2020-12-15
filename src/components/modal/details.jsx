@@ -87,6 +87,16 @@ export default function Details (props){
                 }
                 </ul>
             </div>
+            <div className="container-pokemonInfoBasic">
+                <h4>Information: </h4>
+                <div>
+                    <ul>
+                        <li>
+                            Height: {props.pokemonHeight}
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div className="container-img">
                 <figure>
                     <img src={props.pokemonImage} alt="pokemonImage"/>

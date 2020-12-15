@@ -90,6 +90,7 @@ function Pokemon (props){
                 pokemonImage={pokemonsDetails.img}
                 pokemonType={pokemonsDetails.type}
                 pokemonData={pokemonsDetails.hits}
+                pokemonHeight={pokemonsDetails.hits.height}
             />
         </div>
     )

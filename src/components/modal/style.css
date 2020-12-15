@@ -65,3 +65,16 @@
     display: flex;
     justify-content: center;
 }
+
+.container-pokemonInfoBasic {
+    text-align: center;
+}
+
+.container-pokemonInfoBasic > div > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container-pokemonInfoBasic > div > ul > li {
+    width: 100%;
+}
