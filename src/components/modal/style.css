@@ -19,17 +19,44 @@
     text-transform: capitalize;
 }
 
-.button-details{
-    text-align: center;
-    height: 30px;
-    width: 90%;
-    padding: 5px 5px;
-    background-color: black;
-    color: white;
-    border-radius: 6px;
+.button-close{
     cursor: pointer;
 }
 
-.button-close{
-    cursor: pointer;
+.content-title {
+    display: flex;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.container-img {
+    display: flex;
+    justify-content: center;
+}
+
+.container-img > figure > img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.container-pokemonTypes {
+    display: flex;
+    justify-content: center;
+}
+
+.pokemonType-list {
+    padding: 0;
+    list-style: square !important;
+}
+
+.pokemonType-list__item {
+    display: inline;
+    margin: 0px 1px;
+}
+
+.container-pokemonTypes > .pokemonType-list:nth-child(2) > .pokemonType-list__item::before{
+    content: "-";
 }

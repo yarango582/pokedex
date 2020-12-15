@@ -34,8 +34,34 @@ export default function Details (props){
 
     const body = (
         <div className={styles.modal}>
+            <div className="content-title">
+                <h2>#{props.pokemonId}</h2>
+            </div>
             <div className="content">
-                <h2>title</h2>
+                <h3>{props.pokemonName}</h3>
+            </div>
+            <div className="container-pokemonTypes">
+                    {
+                        props.pokemonType.map((data, index)=>{
+                            return(
+                                <ul 
+                                className="pokemonType-list"
+                                key={index}
+                                >
+                                <li 
+                                className="pokemonType-list__item"
+                                >
+                                    {data.type.name}
+                                </li>
+                                </ul>
+                            )
+                        })
+                    }
+            </div>
+            <div className="container-img">
+                <figure>
+                    <img src={props.pokemonImage} alt="pokemonImage"/>
+                </figure>
             </div>
             <div className="container-button-close">
                 <Button 
