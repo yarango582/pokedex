@@ -60,3 +60,8 @@
 .container-pokemonTypes > .pokemonType-list:nth-child(2) > .pokemonType-list__item::before{
     content: "-";
 }
+
+.container-pokemonAbilities {
+    display: flex;
+    justify-content: center;
+}

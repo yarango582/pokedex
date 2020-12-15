@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Modal, Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import './style.css';
@@ -27,10 +27,24 @@ export default function Details (props){
 
     const styles = useStyle();
     const [modal, setModal] = useState(false);
-
+    const [pokeData, setPokeData] = useState([]);
+    const [abilities, setAbilities] = useState([]);
     const openCloseModal = () =>{
         setModal(!modal);
     }
+
+    useEffect(() => {
+
+        if(modal){
+            setPokeData(props.pokemonData);
+            if(pokeData.abilities !== undefined){
+                setAbilities(pokeData.abilities)
+            }
+        }
+        
+    }, [modal, props.pokemonData, abilities, pokeData.abilities])
+
+ 
 
     const body = (
         <div className={styles.modal}>
@@ -41,6 +55,7 @@ export default function Details (props){
                 <h3>{props.pokemonName}</h3>
             </div>
             <div className="container-pokemonTypes">
+
                     {
                         props.pokemonType.map((data, index)=>{
                             return(
@@ -57,6 +72,20 @@ export default function Details (props){
                             )
                         })
                     }
+            </div>
+            <div className="container-pokemonAbilities">
+                <h4>Skills: </h4>
+                <ul>
+                {
+                    abilities.map((poke, index) =>{
+                        return(
+                            <li key={index}>
+                                {poke.ability.name}
+                            </li>
+                        )
+                    })
+                }
+                </ul>
             </div>
             <div className="container-img">
                 <figure>
@@ -80,6 +109,7 @@ export default function Details (props){
                 onClose={openCloseModal}
             > 
                 {body}
+                {}
             </Modal>
             <div className="container-button-open">
                 <Button onClick={()=>openCloseModal()}>View details - {props.pokemonName}</Button>
