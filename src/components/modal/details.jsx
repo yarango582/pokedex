@@ -14,6 +14,9 @@ const useStyle = makeStyles({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        overflow: 'scroll',
     },
     field:{
         width: '100%',
