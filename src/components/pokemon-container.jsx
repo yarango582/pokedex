@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import Pokecard from './pokecard/pokemon';
+import './style.css';
 
 function PokemonContainer(props){
 

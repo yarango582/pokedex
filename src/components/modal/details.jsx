@@ -66,7 +66,7 @@ export default function Details (props){
             <div className="content">
                 <h3>{props.pokemonName}</h3>
                 <div>
-                    <h5> {props.pokemonExp}Exp</h5>
+                    <h5>{props.pokemonExp}Exp</h5>
                 </div>
             </div>
             <div className="container-pokemon">
