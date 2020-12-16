@@ -8,7 +8,8 @@ const useStyle = makeStyles({
         position: 'absolute',
         width: '400px',
         background: 'white',
-        border: '2px solid #000',
+        border: '3px solid #000',
+        borderRadius: '6px',
         boxShadow: '10px 5px 5px black',
         padding: '10px 10px',
         top: '50%',
@@ -32,6 +33,8 @@ export default function Details (props){
     const [modal, setModal] = useState(false);
     const [pokeData, setPokeData] = useState([]);
     const [abilities, setAbilities] = useState([]);
+    const [pokeStatus, setPokeStatus] = useState([]);
+
     const openCloseModal = () =>{
         setModal(!modal);
     }
@@ -43,11 +46,17 @@ export default function Details (props){
             if(pokeData.abilities !== undefined){
                 setAbilities(pokeData.abilities)
             }
+            if(pokeData.stats !== undefined){
+                setPokeStatus(pokeData.stats)
+            }
         }
         
-    }, [modal, props.pokemonData, abilities, pokeData.abilities])
-
- 
+    }, [modal, 
+        props.pokemonData, 
+        abilities, 
+        pokeData.abilities,
+        pokeData.stats
+    ])
 
     const body = (
         <div className={styles.modal}>
@@ -56,27 +65,11 @@ export default function Details (props){
             </div>
             <div className="content">
                 <h3>{props.pokemonName}</h3>
+                <div>
+                    <h5> {props.pokemonExp}Exp</h5>
+                </div>
             </div>
-            <div className="container-pokemonTypes">
-
-                    {
-                        props.pokemonType.map((data, index)=>{
-                            return(
-                                <ul 
-                                className="pokemonType-list"
-                                key={index}
-                                >
-                                <li 
-                                className="pokemonType-list__item"
-                                >
-                                    {data.type.name}
-                                </li>
-                                </ul>
-                            )
-                        })
-                    }
-            </div>
-            <div className="container-pokemonAbilities">
+            <div className="container-pokemon">
                 <h4>Skills: </h4>
                 <ul>
                 {
@@ -90,15 +83,19 @@ export default function Details (props){
                 }
                 </ul>
             </div>
-            <div className="container-pokemonInfoBasic">
-                <h4>Information: </h4>
-                <div>
-                    <ul>
-                        <li>
-                            Height: {props.pokemonHeight}
-                        </li>
-                    </ul>
-                </div>
+            <div className="container-pokemon">
+                <h4>Status: </h4>
+                <ul>
+                    {
+                        pokeStatus.map((data, index)=>{
+                            return(
+                                <li key={index}>
+                                    {data.stat.name}: {data.base_stat}
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
             </div>
             <div className="container-img">
                 <figure>

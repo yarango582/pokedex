@@ -47,34 +47,18 @@
     justify-content: center;
 }
 
-.pokemonType-list {
-    padding: 0;
-    list-style: square !important;
-}
 
-.pokemonType-list__item {
-    display: inline;
-    margin: 0px 1px;
-}
-
-.container-pokemonTypes > .pokemonType-list:nth-child(2) > .pokemonType-list__item::before{
-    content: "-";
-}
-
-.container-pokemonAbilities {
+.container-pokemon {
     display: flex;
     justify-content: center;
 }
 
-.container-pokemonInfoBasic {
-    text-align: center;
-}
-
-.container-pokemonInfoBasic > div > ul {
-    list-style: none;
+.container-pokemon-status {
+    display: flex;
+    justify-content: flex-start;
     padding: 0;
 }
 
-.container-pokemonInfoBasic > div > ul > li {
-    width: 100%;
+.container-pokemon > ul >li {
+    list-style: none;
 }
